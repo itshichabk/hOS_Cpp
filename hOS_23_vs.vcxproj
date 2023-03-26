@@ -23,6 +23,7 @@
     <ClCompile Include="Login.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="MessageBox.cpp" />
     <ClCompile Include="Session.cpp" />
     <ClCompile Include="User.cpp" />
     <ClCompile Include="UserManager.cpp" />
@@ -32,6 +33,7 @@
     <ClInclude Include="Kernel.h" />
     <ClInclude Include="Login.h" />
     <ClInclude Include="MainMenu.h" />
+    <ClInclude Include="MessageBox.h" />
     <ClInclude Include="Session.h" />
     <ClInclude Include="User.h" />
     <ClInclude Include="UserManager.h" />

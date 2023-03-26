@@ -1,4 +1,5 @@
 #include "Login.h"
+#include "MessageBox.h"
 
 Login::Login() : _win(45, 10, true, "Login")
 {
@@ -7,17 +8,19 @@ Login::Login() : _win(45, 10, true, "Login")
 User* Login::loginPrompt(UserManager &userMgr)
 {
 	printWindow();
-
 	if (!userMgr.doesUsersExist())
 	{
+		MessageBox msgBox(MessageBox::warning, "No users file, creating new account.");
 		showMessage(4);
 	}
 	else
 	{
+		MessageBox msgBox(MessageBox::info, "users file found.");
 		showMessage(5);
 	}
 
 	scanUser();
+	_win.refreshBox();
 	
 	if (userMgr.doesUsersExist() && userExists(userMgr.getUsers()))
 	{
@@ -28,6 +31,7 @@ User* Login::loginPrompt(UserManager &userMgr)
 		do
 		{
 			scanPwd();
+			_win.refreshBox();
 
 			if (pwdExists(userMgr.getUsers()[_userIndex]))
 			{
@@ -38,6 +42,7 @@ User* Login::loginPrompt(UserManager &userMgr)
 			}
 			else
 			{
+				MessageBox msgBox(MessageBox::error, "Wrong password. Please try again.");
 				showMessage(3);
 			}
 
@@ -121,6 +126,7 @@ std::string Login::scanPwd()
 
 	char pwInChar[24] = "";
 
+	//TODO: fix max length string stack corruption error
 	mvwgetnstr(_win.getWIN(), 4, 14, pwInChar, 24);
 
 	_pwdIn = pwInChar;
@@ -138,7 +144,6 @@ void Login::printMessage(std::string message)
 
 	wmove(_win.getWIN(), 7, (_win.getWidth() - message.length()) / 2);
 	wprintw(_win.getWIN(), message.c_str());
-	//mvwprintw(_win.getWin(), 7, (_win.getWidth() - message.length()) / 2, message.c_str());
 	wrefresh(_win.getWIN());
 }
 
@@ -177,6 +182,5 @@ void Login::showMessage(int code)
 
 	wmove(_win.getWIN(), 7, (_win.getWidth() - message.length()) / 2);
 	wprintw(_win.getWIN(), message.c_str());
-	//mvwprintw(_win.getWin(), 7, (_win.getWidth() - message.length()) / 2, message.c_str());
 	wrefresh(_win.getWIN());
 }
