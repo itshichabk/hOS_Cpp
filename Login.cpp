@@ -4,7 +4,7 @@ Login::Login() : _win(45, 10, true, "Login")
 {
 }
 
-void Login::loginPrompt(UserManager &userMgr)
+User* Login::loginPrompt(UserManager &userMgr)
 {
 	printWindow();
 
@@ -21,30 +21,54 @@ void Login::loginPrompt(UserManager &userMgr)
 	
 	if (userMgr.doesUsersExist() && userExists(userMgr.getUsers()))
 	{
-		showMessage(0);
-		scanPwd();
+		_newUser = false;
 
-		if (pwdExists(userMgr.getUsers()[_userIndex]))
+		showMessage(0);
+
+		do
 		{
-			showMessage(2);
-		}
-		else
-		{
-			showMessage(3);
-		}
+			scanPwd();
+
+			if (pwdExists(userMgr.getUsers()[_userIndex]))
+			{
+				std::string message = "Welcome " + userMgr.getUsers()[_userIndex].getName();
+				printMessage(message);
+				break; 
+
+			}
+			else
+			{
+				showMessage(3);
+			}
+
+		} while (1);
 	}
 	else
 	{
+		_newUser = true;
 		showMessage(1);
+
+		scanPwd();
+
+		userMgr.createUser(_userIn, _pwdIn, 1);
+		_userIndex = userMgr.getUsers().size() - 1;
 	}
+
+	return &userMgr.getUsers()[_userIndex];
+
+}
+
+bool Login::isUserNew()
+{
+	return _newUser;
 }
 
 void Login::printWindow()
 {
 	_win.drawWindow();
-	mvwprintw(_win.getWin(), 2, 3, "User     : ");
-	mvwprintw(_win.getWin(), 4, 3, "Password : ");
-	wrefresh(_win.getWin());
+	mvwprintw(_win.getWIN(), 2, 3, "User     : ");
+	mvwprintw(_win.getWIN(), 4, 3, "Password : ");
+	wrefresh(_win.getWIN());
 }
 
 bool Login::userExists(std::vector<User>& users)
@@ -72,30 +96,52 @@ bool Login::pwdExists(User& user)
 
 std::string Login::scanUser()
 {
+	wmove(_win.getWIN(), 2, 14);
+	wclrtoeol(_win.getWIN());
+	_win.refreshBox();
+
 	curs_set(1);
 
 	char userInChar[24] = "";
 
-	mvwgetnstr(_win.getWin(), 2, 14, userInChar, 24);
+	mvwgetnstr(_win.getWIN(), 2, 14, userInChar, 24);
 
 	_userIn = userInChar;
-	// no
 	return _userIn;
-	//mvwscanw(_win, 2, 14, "")
 
 }
 
 std::string Login::scanPwd()
 {
+	wmove(_win.getWIN(), 4, 14);
+	wclrtoeol(_win.getWIN());
+	_win.refreshBox();
+
+	curs_set(1);
+
 	char pwInChar[24] = "";
 
-	mvwgetnstr(_win.getWin(), 4, 14, pwInChar, 24);
+	mvwgetnstr(_win.getWIN(), 4, 14, pwInChar, 24);
 
 	_pwdIn = pwInChar;
-	// no
 	return _pwdIn;
-	//mvwscanw(_win, 2, 14, "")
 }
+
+void Login::printMessage(std::string message)
+{
+	curs_set(0);
+
+	wmove(_win.getWIN(), 7, 0);
+	wclrtoeol(_win.getWIN());
+
+	_win.refreshBox();
+
+	wmove(_win.getWIN(), 7, (_win.getWidth() - message.length()) / 2);
+	wprintw(_win.getWIN(), message.c_str());
+	//mvwprintw(_win.getWin(), 7, (_win.getWidth() - message.length()) / 2, message.c_str());
+	wrefresh(_win.getWIN());
+}
+
 
 void Login::showMessage(int code)
 {
@@ -124,13 +170,13 @@ void Login::showMessage(int code)
 		break;
 	}
 
-	wmove(_win.getWin(), 7, 0);
-	wclrtoeol(_win.getWin());
+	wmove(_win.getWIN(), 7, 0);
+	wclrtoeol(_win.getWIN());
 
 	_win.refreshBox();
 
-	wmove(_win.getWin(), 7, (_win.getWidth() - message.length()) / 2);
-	wprintw(_win.getWin(), message.c_str());
+	wmove(_win.getWIN(), 7, (_win.getWidth() - message.length()) / 2);
+	wprintw(_win.getWIN(), message.c_str());
 	//mvwprintw(_win.getWin(), 7, (_win.getWidth() - message.length()) / 2, message.c_str());
-	wrefresh(_win.getWin());
+	wrefresh(_win.getWIN());
 }

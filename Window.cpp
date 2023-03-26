@@ -33,7 +33,7 @@ Window::~Window()
 	_win = NULL;
 }
 
-WINDOW* Window::getWin()
+WINDOW* Window::getWIN()
 {
 	return _win;
 }

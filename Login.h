@@ -12,10 +12,12 @@ private:
 	std::string _userIn = "";
 	std::string _pwdIn = "";
 
+	bool _newUser;
+
 public:
 	Login();
 
-	void loginPrompt(UserManager& userMgr);
+	User* loginPrompt(UserManager& userMgr);
 
 	void printWindow();
 	std::string scanUser();
@@ -25,5 +27,8 @@ public:
 	bool pwdExists(User& user);
 
 	void showMessage(int code);
+	void printMessage(std::string message);
+
+	bool isUserNew();
 };
 

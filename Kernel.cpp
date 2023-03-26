@@ -11,12 +11,12 @@ Kernel::~Kernel()
 
 void Kernel::runtime()
 {
-    if (userMgr.doesUsersExist())
-    {
+    _session.startSession( _login.loginPrompt(_userMgr) );
 
-    }
-    login.loginPrompt(userMgr);
-    system("pause>0");
+    clear();
+
+    _session.showMainMenu();
+
 }
 
 void initOS()

@@ -32,3 +32,28 @@ std::string User::getPwd() const
 {
     return _pwd;
 }
+
+const std::string User::getType() const
+{
+    std::string type;
+
+    switch (_type)
+    {
+    case type::admin:
+        type = "Administrator";
+        break;
+    case type::regular:
+        type = "Regular";
+        break;
+    case type::guest:
+        type = "Guest";
+        break;
+    }
+
+    return type;
+}
+
+const int User::getTypeInt() const
+{
+    return _type;
+}

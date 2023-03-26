@@ -396,3 +396,9 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+*.vcxproj
+*.vcxproj
+*.filters
+0
+hOS_23_vs.vcxproj
+hOS_23_vs.vcxproj.filters

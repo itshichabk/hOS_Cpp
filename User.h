@@ -12,6 +12,8 @@ public:
     User(std::string name, std::string pwd, int typeInt);
     std::string getName() const;
     std::string getPwd() const;
+    const std::string getType() const;
+    const int getTypeInt() const;
 
 };
 

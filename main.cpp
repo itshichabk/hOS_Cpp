@@ -8,4 +8,6 @@ int main()
     Kernel krnl;
 
     krnl.runtime();
+
+    system("pause>0");
 }

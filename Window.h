@@ -21,7 +21,7 @@ public:
 		int x = 0, int y = 0);
 	~Window();
 
-	WINDOW* getWin();
+	WINDOW* getWIN();
 	const int getWidth() const;
 	const int getHeight() const;
 
