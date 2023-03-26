@@ -26,11 +26,15 @@ MessageBox::MessageBox(MessageBox::type type, std::string message)
 	wrefresh(_win.getWIN());
 	noecho();
 	getch();
-	echo();
-	curs_set(1);
-	delwin(_win.getWIN());
+
 }
 
 MessageBox::~MessageBox()
 {
+	echo();
+
+	curs_set(1);
+	delwin(_win.getWIN());
+
+	_message = "";
 }

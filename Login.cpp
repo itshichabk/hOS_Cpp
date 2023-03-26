@@ -10,12 +10,12 @@ User* Login::loginPrompt(UserManager &userMgr)
 	printWindow();
 	if (!userMgr.doesUsersExist())
 	{
-		MessageBox msgBox(MessageBox::warning, "No users file, creating new account.");
+		showMessageBox(MessageBox::warning, "No users file, creating new account.");
 		showMessage(4);
 	}
 	else
 	{
-		MessageBox msgBox(MessageBox::info, "users file found.");
+		showMessageBox(MessageBox::info, "users file found.");
 		showMessage(5);
 	}
 
@@ -42,7 +42,7 @@ User* Login::loginPrompt(UserManager &userMgr)
 			}
 			else
 			{
-				MessageBox msgBox(MessageBox::error, "Wrong password. Please try again.");
+				showMessageBox(MessageBox::error, "Wrong password. Please try again.");
 				showMessage(3);
 			}
 
@@ -61,6 +61,12 @@ User* Login::loginPrompt(UserManager &userMgr)
 
 	return &userMgr.getUsers()[_userIndex];
 
+}
+
+void Login::showMessageBox(MessageBox::type type, std::string message)
+{
+	_msgBox = new MessageBox(type, message);
+	delete _msgBox;
 }
 
 bool Login::isUserNew()
