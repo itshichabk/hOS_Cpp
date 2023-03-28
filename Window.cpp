@@ -5,7 +5,7 @@ Window::Window(int w, int h, bool isCentered, std::string title, bool shadow, in
 	_w = w;
 	_h = h;
 	_title = title;
-	shadow = _shadow;
+	_shadow = shadow;
 	_x = x;
 	_y = y;
 
@@ -20,6 +20,11 @@ Window::Window(int w, int h, bool isCentered, std::string title, bool shadow, in
 
 	_win = newwin(h, w, y, x);
 	box(_win, 0, 0);
+
+	//if (_shadow)
+	//{
+	//	_shadowWin = newwin(h, w, y + 1, x + 1);
+	//}
 }
 
 Window::~Window()
@@ -30,13 +35,23 @@ Window::~Window()
 	_h = 0;
 	_title = "";
 	_shadow = false;
+	wclear(_win);
+	wrefresh(_win);
+	delwin(_win);
+	//delwin(_shadowWin);
 	_win = NULL;
+	//_shadowWin = NULL;
 }
 
 WINDOW* Window::getWIN()
 {
 	return _win;
 }
+
+//WINDOW* Window::getShadowWIN()
+//{
+//	return _shadowWin;
+//}
 
 const int Window::getWidth() const
 {

@@ -7,11 +7,13 @@ class Session
 {
 private:
 	User* _crntUser;
-	MainMenu _mainMenu;
+	MainMenu* _mainMenu;
 
 public:
-	void startSession(User* user);
-	void showMainMenu();
 	User* getCrntUser() const;
+	void startSession(User* user);
+	void logoff();
+
+	void showMainMenu();
 };
 

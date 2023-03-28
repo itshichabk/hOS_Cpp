@@ -8,6 +8,8 @@ private:
 
 public:
 	MainMenu();
+	~MainMenu();
+
 	Window& getWin();
 };
 

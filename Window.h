@@ -6,6 +6,7 @@ class Window
 {
 protected:
 	WINDOW* _win;
+	//WINDOW* _shadowWin = NULL;
 
 	int _x, _y,
 		_w, _h;
@@ -22,6 +23,8 @@ public:
 	~Window();
 
 	WINDOW* getWIN();
+	//WINDOW* getShadowWIN();
+
 	const int getWidth() const;
 	const int getHeight() const;
 

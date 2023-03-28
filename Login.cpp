@@ -1,22 +1,22 @@
 #include "Login.h"
-#include "MessageBox.h"
+#include "MsgBox.h"
 
-Login::Login() : _win(45, 10, true, "Login")
+Login::Login() : _win(40, 7, true, "Login")
 {
 }
 
 User* Login::loginPrompt(UserManager &userMgr)
 {
 	printWindow();
+	_win.refreshBox();
+
 	if (!userMgr.doesUsersExist())
 	{
-		showMessageBox(MessageBox::warning, "No users file, creating new account.");
-		showMessage(4);
+		showMsgBox(MsgBox::warning, "No users file, creating new account.");
 	}
 	else
 	{
-		showMessageBox(MessageBox::info, "users file found.");
-		showMessage(5);
+		showMsgBox(MsgBox::info, "users file found.");
 	}
 
 	scanUser();
@@ -25,8 +25,7 @@ User* Login::loginPrompt(UserManager &userMgr)
 	if (userMgr.doesUsersExist() && userExists(userMgr.getUsers()))
 	{
 		_newUser = false;
-
-		showMessage(0);
+		showMsgBox(MsgBox::info, "'" + _userIn + "' exists.");
 
 		do
 		{
@@ -35,14 +34,13 @@ User* Login::loginPrompt(UserManager &userMgr)
 
 			if (pwdExists(userMgr.getUsers()[_userIndex]))
 			{
-				std::string message = "Welcome " + userMgr.getUsers()[_userIndex].getName();
-				printMessage(message);
+				printMessage("Welcome " + userMgr.getUsers()[_userIndex].getName());
 				break; 
 
 			}
 			else
 			{
-				showMessageBox(MessageBox::error, "Wrong password. Please try again.");
+				showMsgBox(MsgBox::error, "Wrong password. Please try again.");
 				showMessage(3);
 			}
 
@@ -51,7 +49,7 @@ User* Login::loginPrompt(UserManager &userMgr)
 	else
 	{
 		_newUser = true;
-		showMessage(1);
+		showMsgBox(MsgBox::info, "'" + _userIn + "' doesn't exist. Creating new account.");
 
 		scanPwd();
 
@@ -59,13 +57,14 @@ User* Login::loginPrompt(UserManager &userMgr)
 		_userIndex = userMgr.getUsers().size() - 1;
 	}
 
+	wclear(_win.getWIN());
+	wrefresh(_win.getWIN());
 	return &userMgr.getUsers()[_userIndex];
-
 }
 
-void Login::showMessageBox(MessageBox::type type, std::string message)
+void Login::showMsgBox(MsgBox::type type, std::string message)
 {
-	_msgBox = new MessageBox(type, message);
+	_msgBox = new MsgBox(type, message);
 	delete _msgBox;
 }
 
@@ -181,12 +180,12 @@ void Login::showMessage(int code)
 		break;
 	}
 
-	wmove(_win.getWIN(), 7, 0);
+	wmove(_win.getWIN(), 6, 0);
 	wclrtoeol(_win.getWIN());
 
 	_win.refreshBox();
 
-	wmove(_win.getWIN(), 7, (_win.getWidth() - message.length()) / 2);
+	wmove(_win.getWIN(), 6, (_win.getWidth() - message.length()) / 2);
 	wprintw(_win.getWIN(), message.c_str());
 	wrefresh(_win.getWIN());
 }

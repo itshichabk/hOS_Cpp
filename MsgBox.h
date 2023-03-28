@@ -1,7 +1,7 @@
 #pragma once
 #include "Window.h"
 
-class MessageBox
+class MsgBox
 {
 private:
 	std::string _message;
@@ -10,8 +10,8 @@ private:
 public:
 	enum type { info, question, warning, error };
 
-	MessageBox(MessageBox::type type, std::string message);
-	~MessageBox();
+	MsgBox(MsgBox::type type, std::string message);
+	~MsgBox();
 
 	void show();
 	void close();
