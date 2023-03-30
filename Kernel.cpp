@@ -1,8 +1,8 @@
-#include <Windows.h>
 #include "Kernel.h"
 
-Kernel::Kernel()
+Kernel::Kernel() : _ver(OSVERSION_MAJ, OSVERSION_MIN)
 {
+    runtime();
 }
 
 Kernel::~Kernel()
@@ -18,19 +18,18 @@ void Kernel::runtime()
 
         // TODO: move showMsgBox function to kernel
         _audio.playAudio("logon.wav");
-        _login.showMsgBox(MsgBox::info, "Welcome " + _session.getCrntUser()->getName());
+        //showMsgBox(MsgBox::info, "Welcome " + _session.getCrntUser()->getName(), 2);
+        showMsgBox(MsgBox::info, "hOS " + _ver.getVersion(), 2);
+        //_login.showMsgBox(MsgBox::info, "Welcome " + _session.getCrntUser()->getName());
         //_login.showMsgBox(MsgBox::info, getVersion());
 
         _session.showMainMenu();
+
+        //_session.logoff();
         _audio.playAudio("logoff.wav");
 
     } while (1);
 
-}
-
-std::string Kernel::getVersion()
-{
-    return "hOS++ " + std::to_string(_majVer) + '.' + std::to_string(_minVer) + " (" + _buildDate + " " + _buildTime + ")";
 }
 
 void initOS()
@@ -64,4 +63,10 @@ void initOS()
         init_pair(3, COLOR_RED, COLOR_BLACK);
 
     }
+}
+
+void Kernel::showMsgBox(MsgBox::type type, std::string message, int sleep)
+{
+    _msgBox = new MsgBox(type, message, sleep);
+    delete _msgBox;
 }

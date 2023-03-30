@@ -1,6 +1,7 @@
+#include <Windows.h>
 #include "MsgBox.h"
 
-MsgBox::MsgBox(MsgBox::type type, std::string message)
+MsgBox::MsgBox(MsgBox::type type, std::string message, int sleep)
 	: _win(message.length() + 9, 5, true)
 {
 	curs_set(0);
@@ -36,7 +37,14 @@ MsgBox::MsgBox(MsgBox::type type, std::string message)
 	mvwprintw(_win.getWIN(), 2, 2, fullMessage.c_str());
 	wrefresh(_win.getWIN());
 	noecho();
-	getch();
+	if (sleep == 0)
+	{
+		getch();
+	}
+	else
+	{
+		Sleep(sleep*1000);
+	}
 
 }
 
@@ -45,7 +53,7 @@ MsgBox::~MsgBox()
 	_message = "";
 
 	echo();
-	curs_set(1);
+	//curs_set(1);
 
 	wclear(_win.getWIN());
 	wrefresh(_win.getWIN());

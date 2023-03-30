@@ -14,10 +14,6 @@ User* Login::loginPrompt(UserManager &userMgr)
 	{
 		showMsgBox(MsgBox::warning, "No users file, creating new account.");
 	}
-	else
-	{
-		showMsgBox(MsgBox::info, "users file found.");
-	}
 
 	scanUser();
 	_win.refreshBox();
@@ -25,7 +21,7 @@ User* Login::loginPrompt(UserManager &userMgr)
 	if (userMgr.doesUsersExist() && userExists(userMgr.getUsers()))
 	{
 		_newUser = false;
-		showMsgBox(MsgBox::info, "'" + _userIn + "' exists.");
+		//showMsgBox(MsgBox::info, "'" + _userIn + "' exists.");
 
 		do
 		{
@@ -40,7 +36,7 @@ User* Login::loginPrompt(UserManager &userMgr)
 			}
 			else
 			{
-				showMsgBox(MsgBox::error, "Wrong password. Please try again.");
+				showMsgBox(MsgBox::error, "Wrong password. Please try again.", 1);
 				showMessage(3);
 			}
 
@@ -49,7 +45,7 @@ User* Login::loginPrompt(UserManager &userMgr)
 	else
 	{
 		_newUser = true;
-		showMsgBox(MsgBox::info, "'" + _userIn + "' doesn't exist. Creating new account.");
+		showMsgBox(MsgBox::info, "'" + _userIn + "' doesn't exist. Creating new account.", 2);
 
 		scanPwd();
 
@@ -62,9 +58,9 @@ User* Login::loginPrompt(UserManager &userMgr)
 	return &userMgr.getUsers()[_userIndex];
 }
 
-void Login::showMsgBox(MsgBox::type type, std::string message)
+void Login::showMsgBox(MsgBox::type type, std::string message, int sleep)
 {
-	_msgBox = new MsgBox(type, message);
+	_msgBox = new MsgBox(type, message, sleep);
 	delete _msgBox;
 }
 

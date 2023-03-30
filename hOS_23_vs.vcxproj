@@ -20,26 +20,36 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AudioEngine.cpp" />
+    <ClCompile Include="HelloWorld.cpp" />
     <ClCompile Include="Kernel.cpp" />
     <ClCompile Include="Login.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="MsgBox.cpp" />
+    <ClCompile Include="OSVersion.cpp" />
+    <ClCompile Include="Program.cpp" />
+    <ClCompile Include="ProgramMgr.cpp" />
     <ClCompile Include="Session.cpp" />
     <ClCompile Include="User.cpp" />
     <ClCompile Include="UserManager.cpp" />
+    <ClCompile Include="Version.cpp" />
     <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioEngine.h" />
+    <ClInclude Include="HelloWorld.h" />
     <ClInclude Include="Kernel.h" />
     <ClInclude Include="Login.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="miniaudio.h" />
     <ClInclude Include="MsgBox.h" />
+    <ClInclude Include="OSVersion.h" />
+    <ClInclude Include="Program.h" />
+    <ClInclude Include="ProgramMgr.h" />
     <ClInclude Include="Session.h" />
     <ClInclude Include="User.h" />
     <ClInclude Include="UserManager.h" />
+    <ClInclude Include="Version.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -28,7 +28,7 @@ public:
 	bool userExists(std::vector<User>& users);
 	bool pwdExists(User& user);
 
-	void showMsgBox(MsgBox::type type, std::string message);
+	void showMsgBox(MsgBox::type type, std::string message, int sleep = 0);
 
 	void showMessage(int code);
 	void printMessage(std::string message);
