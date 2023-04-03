@@ -6,5 +6,6 @@ class HelloWorld : public Program
 private:
 public:
 	HelloWorld();
+	void run();
 };
 

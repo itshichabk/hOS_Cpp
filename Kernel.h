@@ -9,9 +9,9 @@
 
 #include "UserManager.h"
 #include "Login.h"
+#include "MainMenu.h"
 #include "Session.h"
 #include "AudioEngine.h"
-#include "MainMenu.h"
 #include "Version.h"
 
 class Kernel
@@ -21,7 +21,7 @@ private:
 
 	UserManager _userMgr;
 	Login _login;
-	Session _session;
+	Session* _session;
 	MsgBox* _msgBox;
 	
 	AudioEngine _audio;
@@ -43,7 +43,7 @@ public:
 	void crash();
 
 	std::string getVersion();
-	void showMsgBox(MsgBox::type type, std::string message, int sleep = 0);
+	//void showMsgBox(MsgBox::type type, std::string message, int sleep = 0);
 };
 
 void initOS();

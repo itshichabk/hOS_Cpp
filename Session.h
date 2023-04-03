@@ -1,8 +1,9 @@
 #pragma once
 #include "UserManager.h"
 #include "Login.h"
-#include "MainMenu.h"
 #include "ProgramMgr.h"
+#include "MainMenu.h"
+#include "AudioEngine.h"
 
 class Session
 {
@@ -12,10 +13,12 @@ private:
 	ProgramMgr _programMgr;
 
 public:
+	Session(User* user);
 	User* getCrntUser() const;
 	MainMenu* getMainMenu();
 
-	void startSession(User* user);
+	void startSession(User* user, AudioEngine* _audio);
+	void runtime();
 	void logoff();
 
 	void showMainMenu();

@@ -5,6 +5,7 @@ Window::Window(int w, int h, bool isCentered, std::string title, bool shadow, in
 	_w = w;
 	_h = h;
 	_title = title;
+	_isCentered = isCentered;
 	_shadow = shadow;
 	_x = x;
 	_y = y;
@@ -25,6 +26,33 @@ Window::Window(int w, int h, bool isCentered, std::string title, bool shadow, in
 	//{
 	//	_shadowWin = newwin(h, w, y + 1, x + 1);
 	//}
+}
+
+Window::Window(const Window& win)
+{
+	_w = win._w;
+	_h = win._h;
+	_title = win._title;
+	_isCentered = win._isCentered;
+	_shadow = win._shadow;
+	_x = win._x;
+	_y = win._y;
+
+	int x = win._x;
+	int y = win._y;
+
+	if (win._isCentered)
+	{
+		int row, col;
+		getmaxyx(stdscr, row, col);
+
+		y = (row - _h) / 2;
+		x = (col - _w) / 2;
+	}
+
+	_win = newwin(win._h, win._w, y, x);
+	box(_win, 0, 0);
+
 }
 
 Window::~Window()

@@ -59,3 +59,9 @@ MsgBox::~MsgBox()
 	wrefresh(_win.getWIN());
 
 }
+
+void showMsgBox(MsgBox::type type, std::string message, int sleep)
+{
+	MsgBox* _msgBox = new MsgBox(type, message, sleep);
+	delete _msgBox;
+}

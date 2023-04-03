@@ -12,6 +12,7 @@ protected:
 		_w, _h;
 
 	std::string _title;
+	bool _isCentered;
 	bool _shadow = false;
 
 public:
@@ -20,6 +21,9 @@ public:
 		std::string title = "",
 		bool shadow = false,
 		int x = 0, int y = 0);
+
+	Window(const Window& win);
+
 	~Window();
 
 	WINDOW* getWIN();

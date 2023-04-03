@@ -4,3 +4,8 @@ HelloWorld::HelloWorld() : Program("helloWorld", "Hello World!", Version(0,1), 2
 {
 
 }
+
+void HelloWorld::run()
+{
+	_win.drawWindow();
+}

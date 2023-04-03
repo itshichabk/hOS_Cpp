@@ -14,16 +14,17 @@ void Kernel::runtime()
 {
     do
     {
-        _session.startSession(_login.loginPrompt(_userMgr));
+        _session = new Session(_login.loginPrompt(_userMgr));
+        //_session.startSession(_login.loginPrompt(_userMgr), &_audio);
+        
 
         // TODO: move showMsgBox function to kernel
-        _audio.playAudio("logon.wav");
         //showMsgBox(MsgBox::info, "Welcome " + _session.getCrntUser()->getName(), 2);
-        showMsgBox(MsgBox::info, "hOS " + _ver.getVersion(), 2);
+        //showMsgBox(MsgBox::info, "hOS " + _ver.getVersion(), 2);
         //_login.showMsgBox(MsgBox::info, "Welcome " + _session.getCrntUser()->getName());
         //_login.showMsgBox(MsgBox::info, getVersion());
 
-        _session.showMainMenu();
+        //_session.showMainMenu();
 
         //_session.logoff();
         _audio.playAudio("logoff.wav");
@@ -63,10 +64,4 @@ void initOS()
         init_pair(3, COLOR_RED, COLOR_BLACK);
 
     }
-}
-
-void Kernel::showMsgBox(MsgBox::type type, std::string message, int sleep)
-{
-    _msgBox = new MsgBox(type, message, sleep);
-    delete _msgBox;
 }

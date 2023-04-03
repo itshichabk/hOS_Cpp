@@ -5,7 +5,7 @@
 
 class Program
 {
-private:
+protected:
 	Window _win;
 
 	std::string _sysName;
@@ -18,6 +18,15 @@ private:
 public:
 	Program(std::string sysName, std::string fullName, Version ver,
 			int w, int h, bool requiresAdmin = false, bool guestAccess = true);
+
+	Program(const Program& p);
+
+	const Program& getInstance();
+
+	Window& getWin();
+
+	virtual void run();
+	void exitProgram();
 	const std::string getFullName() const;
 };
 
