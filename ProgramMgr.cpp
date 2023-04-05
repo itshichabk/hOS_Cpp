@@ -7,6 +7,8 @@ ProgramMgr::ProgramMgr()
 {
 	_programs.push_back(new OSVersion);
 	_programs.push_back(new HelloWorld);
+	_programs.push_back(new OSVersion);
+
 }
 
 const std::vector<Program*> ProgramMgr::getPrograms() const
@@ -21,13 +23,22 @@ Program* ProgramMgr::getProgram(int i) const
 
 void ProgramMgr::runProgram(const int index)
 {
-	_instance = new Program(_programs[index]->getInstance());
-	_instance->getWin().drawWindow();
+	// TODO: check admin/guest rights before launching program
+
+	std::string type = typeid(*_programs[index]).name();
+	type.erase(0, 6);
+
+	if (type == "HelloWorld")
+		_instance = new HelloWorld();
+
+	else if (type == "OSVersion")
+		_instance = new OSVersion();
+
+	_instance->run();
 }
 
 void ProgramMgr::closeProgram()
 {
-	//_instance->getWin().~Window();
 	delete _instance;
 	_instance = NULL;
 }

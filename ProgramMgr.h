@@ -5,7 +5,7 @@ class ProgramMgr
 {
 private:
 	std::vector<Program*> _programs;
-	Program* _instance;
+	Program* _instance = NULL;
 
 public:
 	ProgramMgr();

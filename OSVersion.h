@@ -7,5 +7,6 @@ private:
 
 public:
 	OSVersion();
+	void run();
 };
 

@@ -22,6 +22,8 @@ public:
 	Program(const Program& p);
 
 	const Program& getInstance();
+	bool requiresAdmin() const;
+	bool guestAccess() const;
 
 	Window& getWin();
 

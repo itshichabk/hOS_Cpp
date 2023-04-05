@@ -22,6 +22,16 @@ const Program& Program::getInstance()
 	return *this;
 }
 
+bool Program::requiresAdmin() const
+{
+	return _requiresAdmin;
+}
+
+bool Program::guestAccess() const
+{
+	return _guestAccess;
+}
+
 Window& Program::getWin()
 {
 	return _win;
