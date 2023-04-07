@@ -34,7 +34,8 @@ void ProgramMgr::runProgram(const int index)
 	else if (type == "OSVersion")
 		_instance = new OSVersion();
 
-	_instance->run();
+	if(_instance != NULL)
+		_instance->run();
 }
 
 void ProgramMgr::closeProgram()

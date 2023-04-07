@@ -7,6 +7,9 @@ Program::Program(std::string sysName, std::string fullName, Version ver, int w, 
 	_fullName = fullName;
 	_requiresAdmin = requiresAdmin;
 	_guestAccess = guestAccess;
+
+	if (requiresAdmin)
+		_guestAccess = false;
 }
 
 Program::Program(const Program& p) : _win(p._win), _ver(p._ver)

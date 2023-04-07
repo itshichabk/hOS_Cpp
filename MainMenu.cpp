@@ -1,10 +1,11 @@
 #include "MainMenu.h"
 #include "Session.h"
 
-MainMenu::MainMenu(Session* _crntSession, ProgramMgr& progMgr) : _win(45, 10, true, "Main menu")
+MainMenu::MainMenu(Session* crntSession, ProgramMgr& progMgr) : _win(45, 10, true, "Main menu")
 {
 	keypad(_win.getWIN(), true);
 
+	_crntSession = crntSession;
 	int choice;
 	int highlight = 0;
 
@@ -68,9 +69,23 @@ MainMenu::MainMenu(Session* _crntSession, ProgramMgr& progMgr) : _win(45, 10, tr
 			}
 			else
 			{
-				progMgr.runProgram(highlight);
-				getch();
-				progMgr.closeProgram();
+				/*
+					Only run program if:
+					1) User is an administrator (admin can run any program)
+					2) Guest access is enabled (anyone can use the program)
+					3) Guest access is disabled, user is a regular account, and program doesn't require admin
+				*/
+
+				if ((_crntSession->getCrntUser()->getType() == "Administrator")
+					|| (progMgr.getProgram(highlight)->guestAccess())
+					|| (!(progMgr.getProgram(highlight)->guestAccess()) && !(progMgr.getProgram(highlight)->requiresAdmin()) && _crntSession->getCrntUser()->getType() == "Regular")
+					)
+				{
+					progMgr.runProgram(highlight);
+					getch();
+					progMgr.closeProgram();
+				}
+
 				break;
 			}
 		}

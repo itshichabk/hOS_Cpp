@@ -7,6 +7,7 @@ class Session;
 class MainMenu
 {
 private:
+	Session* _crntSession;
 	Window _win;
 
 public:

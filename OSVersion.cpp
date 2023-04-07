@@ -1,6 +1,6 @@
 #include "OSVersion.h"
 
-OSVersion::OSVersion() : Program("ver", "About hOS", Version(0,1), 50, 7)
+OSVersion::OSVersion() : Program("ver", "About hOS (no guest)", Version(0,1), 50, 7, false, false)
 {
 
 }
