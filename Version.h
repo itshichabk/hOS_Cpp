@@ -1,3 +1,11 @@
+/*
+*	hOS Version Number
+*	==================
+*
+*	A simple class that contains two integers for a version number
+*	as well as a build date and time (automatically set on compile time).
+*/
+
 #pragma once
 #include <string>
 

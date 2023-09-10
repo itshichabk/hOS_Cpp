@@ -1,3 +1,10 @@
+/*
+*	hOS External Console Program
+*	============================
+* 
+*	Allows external console programs to be run inside the same window as the OS'
+*/
+
 #pragma once
 #include "Program.h"
 

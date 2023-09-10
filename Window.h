@@ -1,3 +1,19 @@
+﻿/*
+*	hOS Window
+*	==========
+* 
+*	Creates a Curses WINDOW with its different parameters like position, size and borders,
+*	as well as centering and setting a window title that'll show up at the upper center
+* 
+*	                         ┌────────────────Hello─────────────────┐
+*                            │                                      │
+*                            │                                      │
+*                            │             Hello World!             │
+*                            │                                      │
+*                            │                                      │
+*                            └──────────────────────────────────────┘
+*/
+
 #pragma once
 #include <curses.h>
 #include <string>

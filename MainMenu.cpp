@@ -26,7 +26,6 @@ MainMenu::MainMenu(Session* crntSession, ProgramMgr& progMgr) : _win(45, 14, tru
 			wattroff(getWin().getWIN(), A_REVERSE);
 		}
 
-
 		// Logoff option
 		if (highlight == progMgr.getPrograms().size())
 			wattron(getWin().getWIN(), A_REVERSE);

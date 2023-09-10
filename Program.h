@@ -1,3 +1,16 @@
+/*
+	hOS Program
+	===========
+
+	The basis of an executable program in the OS.
+
+	Each program has :
+	- an internal system name
+	- a full name
+	- a version number
+	- permission types (admin only, non-guests only, public)
+*/
+
 #pragma once
 #include <vector>
 #include "Window.h"

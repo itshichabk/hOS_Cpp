@@ -1,3 +1,14 @@
+/*
+*	hOS Login Component
+*	===================
+* 
+*	The login process either logs in to an existing account or creates a new one
+*	depending on the user's input. (if username exists)
+* 
+*	Once the login process is done, it returns the connected User
+*	so a Session can be initialized with it.
+*/
+
 #pragma once
 #include <vector>
 #include "Window.h"
@@ -27,8 +38,6 @@ public:
 
 	bool userExists(std::vector<User>& users);
 	bool pwdExists(User& user);
-
-	void showMsgBox(MsgBox::type type, std::string message, int sleep = 0);
 
 	void showMessage(int code);
 	void printMessage(std::string message);

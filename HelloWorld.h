@@ -1,3 +1,10 @@
+/*
+*	hOS Hello World!
+*	================
+* 
+*	An example internal program that displays "Hello World!" in a window.
+*/
+
 #pragma once
 #include "Program.h"
 

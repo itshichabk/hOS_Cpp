@@ -58,12 +58,6 @@ User* Login::loginPrompt(UserManager &userMgr)
 	return &userMgr.getUsers()[_userIndex];
 }
 
-void Login::showMsgBox(MsgBox::type type, std::string message, int sleep)
-{
-	_msgBox = new MsgBox(type, message, sleep);
-	delete _msgBox;
-}
-
 bool Login::isUserNew()
 {
 	return _newUser;

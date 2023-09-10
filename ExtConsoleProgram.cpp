@@ -11,6 +11,7 @@ ExtConsoleProgram::~ExtConsoleProgram()
 	system("cls");
 }
 
+// Special code to run the console program in the same window and seamlessly go back to the OS after finishing
 void ExtConsoleProgram::run()
 {
 	def_prog_mode();

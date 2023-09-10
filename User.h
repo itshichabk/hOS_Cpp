@@ -1,3 +1,11 @@
+/*
+*   hOS User
+    ========
+
+    A user in the OS has a name, a password, and a type (admin, regular, or guest) which will determine
+    which actions the user's allowed to do in a session.
+*/
+
 #pragma once
 #include <string>
 

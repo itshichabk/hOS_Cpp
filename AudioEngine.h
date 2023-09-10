@@ -1,3 +1,10 @@
+/*
+*	hOS Audio Engine
+*	================
+* 
+*	Powered by the miniaudio library! (https://github.com/mackron/miniaudio)
+*/
+
 #pragma once
 #include "miniaudio.h"
 

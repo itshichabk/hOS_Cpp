@@ -1,3 +1,13 @@
+/*
+	hOS Program Manager
+	===================
+
+	The program manager loads available programs into a vector of Programs
+	which will then be sent to the Main Menu to be displayed for the user.
+
+	It's also in charge of running and closing program instances.
+*/
+
 #pragma once
 #include "Program.h"
 
