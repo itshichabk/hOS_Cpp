@@ -9,4 +9,5 @@ void OSVersion::run()
 {
 	mvwprintw(_win.getWIN(), 1, 1, "placeholder version");
 	_win.drawWindow();
+	getch();
 }

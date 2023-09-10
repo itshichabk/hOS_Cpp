@@ -8,4 +8,5 @@ void HelloWorld::run()
 {
 	mvwprintw(_win.getWIN(), 1, 1, "Hello!!!");
 	_win.drawWindow();
+	getch();
 }

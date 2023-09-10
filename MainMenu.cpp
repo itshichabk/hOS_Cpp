@@ -1,7 +1,7 @@
 #include "MainMenu.h"
 #include "Session.h"
 
-MainMenu::MainMenu(Session* crntSession, ProgramMgr& progMgr) : _win(45, 10, true, "Main menu")
+MainMenu::MainMenu(Session* crntSession, ProgramMgr& progMgr) : _win(45, 14, true, "Main menu")
 {
 	keypad(_win.getWIN(), true);
 
@@ -40,11 +40,11 @@ MainMenu::MainMenu(Session* crntSession, ProgramMgr& progMgr) : _win(45, 10, tru
 		);
 
 		wattroff(getWin().getWIN(), A_REVERSE);
-		
 
 		// Render everything
 		getWin().drawWindow();
 		getWin().refreshBox();
+		refresh();
 
 		noecho();
 		choice = wgetch(getWin().getWIN());
@@ -82,7 +82,6 @@ MainMenu::MainMenu(Session* crntSession, ProgramMgr& progMgr) : _win(45, 10, tru
 					)
 				{
 					progMgr.runProgram(highlight);
-					getch();
 					progMgr.closeProgram();
 				}
 

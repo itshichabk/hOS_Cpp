@@ -109,7 +109,6 @@ void Window::refreshBox()
 {
 	box(_win, 0, 0);
 	mvwprintw(_win, 0, (_w - _title.length()) / 2, _title.c_str());
-
 	wrefresh(_win);
 }
 

@@ -2,13 +2,15 @@
 #include "ProgramMgr.h"
 #include "OSVersion.h"
 #include "HelloWorld.h"
+#include "Carnivox.h"
+#include "Settings.h"
 
 ProgramMgr::ProgramMgr()
 {
 	_programs.push_back(new OSVersion);
 	_programs.push_back(new HelloWorld);
-	_programs.push_back(new OSVersion);
-
+	_programs.push_back(new Carnivox);
+	_programs.push_back(new Settings);
 }
 
 const std::vector<Program*> ProgramMgr::getPrograms() const
@@ -33,6 +35,12 @@ void ProgramMgr::runProgram(const int index)
 
 	else if (type == "OSVersion")
 		_instance = new OSVersion();
+
+	else if (type == "Carnivox")
+		_instance = new Carnivox();
+
+	else if (type == "Settings")
+		_instance = new Settings();
 
 	if(_instance != NULL)
 		_instance->run();

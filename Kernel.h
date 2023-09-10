@@ -1,3 +1,11 @@
+/*
+*	hOS Kernel
+*	==========
+*
+*	Contains the fundamentals of the OS, such as its version and audio engine.
+*	The kernel is in charge of the communication between the user manager and the current session.
+*/
+
 #pragma once
 
 //#define MAXIMIZED
@@ -26,9 +34,6 @@ private:
 	
 	AudioEngine _audio;
 
-	//int _majVer = 0,
-	//	_minVer = 1;
-
 	//std::string _buildDate = __DATE__;
 	//std::string _buildTime = __TIME__;
 	
@@ -39,11 +44,12 @@ public:
 	Kernel();
 	~Kernel();
 
+	// The main "loop" of the OS
 	void runtime();
-	void crash();
 
 	std::string getVersion();
 	//void showMsgBox(MsgBox::type type, std::string message, int sleep = 0);
 };
 
+// Initializes curses mode and related properties (colors, window size)
 void initOS();

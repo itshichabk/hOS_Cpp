@@ -12,20 +12,18 @@ Kernel::~Kernel()
 
 void Kernel::runtime()
 {
+    // TODO: To be reworked
     do
     {
+        // Initializes a new session
         _session = new Session(_login.loginPrompt(_userMgr));
         //_session.startSession(_login.loginPrompt(_userMgr), &_audio);
-        
-
         // TODO: move showMsgBox function to kernel
         //showMsgBox(MsgBox::info, "Welcome " + _session.getCrntUser()->getName(), 2);
         //showMsgBox(MsgBox::info, "hOS " + _ver.getVersion(), 2);
         //_login.showMsgBox(MsgBox::info, "Welcome " + _session.getCrntUser()->getName());
         //_login.showMsgBox(MsgBox::info, getVersion());
-
         //_session.showMainMenu();
-
         //_session.logoff();
         _audio.playAudio("logoff.wav");
 
@@ -59,9 +57,9 @@ void initOS()
     else
     {
         start_color();
-        init_pair(1, COLOR_CYAN, COLOR_BLACK);
-        init_pair(2, COLOR_YELLOW, COLOR_BLACK);
-        init_pair(3, COLOR_RED, COLOR_BLACK);
+        init_pair(1, COLOR_CYAN, COLOR_BLACK);      // 'Info' message box color (cyan)
+        init_pair(2, COLOR_YELLOW, COLOR_BLACK);    // 'Warning' message box color (yellow)
+        init_pair(3, COLOR_RED, COLOR_BLACK);       // 'Error' message box color (red)
 
     }
 }

@@ -1,4 +1,17 @@
+/*
+*	hOS Session
+*	===========
+*	
+*	A session is started once a user logs in, and has its own list of 
+*	personal settings (not yet) and programs depending on the user and its type.
+* 
+*	It also prevents a user from launching a program it's not allowed to
+*	depending on its type (Regular or Guest), 
+	and gives full privileges to a user with type Administrator.
+*/
+
 #pragma once
+
 #include "UserManager.h"
 #include "Login.h"
 #include "ProgramMgr.h"
@@ -9,8 +22,8 @@ class Session
 {
 private:
 	User* _crntUser;
-	MainMenu* _mainMenu;
 	ProgramMgr _programMgr;
+	MainMenu* _mainMenu;
 
 public:
 	Session(User* user);

@@ -63,6 +63,18 @@
     <ClCompile Include="HelloWorld.cpp">
       <Filter>Programs</Filter>
     </ClCompile>
+    <ClCompile Include="ExtConsoleProgram.cpp">
+      <Filter>Programs</Filter>
+    </ClCompile>
+    <ClCompile Include="ExtGUIProgram.cpp">
+      <Filter>Programs</Filter>
+    </ClCompile>
+    <ClCompile Include="Carnivox.cpp">
+      <Filter>Programs</Filter>
+    </ClCompile>
+    <ClCompile Include="Settings.cpp">
+      <Filter>Programs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
@@ -108,6 +120,18 @@
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="HelloWorld.h">
+      <Filter>Programs</Filter>
+    </ClInclude>
+    <ClInclude Include="ExtConsoleProgram.h">
+      <Filter>Programs</Filter>
+    </ClInclude>
+    <ClInclude Include="ExtGUIProgram.h">
+      <Filter>Programs</Filter>
+    </ClInclude>
+    <ClInclude Include="Carnivox.h">
+      <Filter>Programs</Filter>
+    </ClInclude>
+    <ClInclude Include="Settings.h">
       <Filter>Programs</Filter>
     </ClInclude>
   </ItemGroup>
